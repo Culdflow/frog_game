@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqnmqkx4dak5f"]
+
+[ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="1_2ugl5"]
+[ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="2_e5rb5"]
+[ext_resource type="Script" uid="uid://c8gvys7y3m52o" path="res://scripts/slope.gd" id="3_kymn1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5rb5"]
+size = Vector2(1167, 100)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e5rb5"]
+a = Vector2(-591, 60)
+b = Vector2(527, -44)
+
+[node name="test_scene" type="Node2D"]
+
+[node name="floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Icon" type="Sprite2D" parent="floor"]
+position = Vector2(576, 598)
+scale = Vector2(9.39062, 1)
+texture = ExtResource("2_e5rb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(581, 587)
+shape = SubResource("RectangleShape2D_e5rb5")
+
+[node name="slope" type="StaticBody2D" parent="."]
+position = Vector2(721, -277)
+collision_layer = 2
+script = ExtResource("3_kymn1")
+
+[node name="Icon" type="Sprite2D" parent="slope"]
+visible = false
+position = Vector2(576, 598)
+scale = Vector2(9.39062, 1)
+texture = ExtResource("2_e5rb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slope"]
+position = Vector2(581, 587)
+shape = SubResource("SegmentShape2D_e5rb5")
+
+[node name="Frog" parent="." instance=ExtResource("1_2ugl5")]
+position = Vector2(911, -175)

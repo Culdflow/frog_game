@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7mr4w0wkjhow"]
+
+[ext_resource type="Script" uid="uid://cwfp6yoeurc82" path="res://scripts/frog.gd" id="1_kuh1s"]
+[ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="1_vwpa2"]
+[ext_resource type="Script" uid="uid://ckyp1lb52okf6" path="res://scripts/StateMachine.gd" id="3_ii6tf"]
+[ext_resource type="Script" uid="uid://chwdtdjg866d8" path="res://States/IdleState.gd" id="4_7uek1"]
+[ext_resource type="Script" uid="uid://clxfjvsgbvi0y" path="res://States/chargingState.gd" id="5_fo7tm"]
+[ext_resource type="Script" uid="uid://coekwvwgp6cpm" path="res://States/spitState.gd" id="6_506uw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kuh1s"]
+size = Vector2(127, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kuh1s"]
+radius = 118.038
+
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("spitAngle", "checkSlope")]
+collision_mask = 2
+script = ExtResource("1_kuh1s")
+spitAngle = NodePath("spitAngle")
+checkSlope = NodePath("CheckSlope")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_vwpa2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_kuh1s")
+
+[node name="CheckSlope" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckSlope"]
+shape = SubResource("CircleShape2D_kuh1s")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player")]
+script = ExtResource("3_ii6tf")
+initial_state = NodePath("IdleState")
+player = NodePath("..")
+metadata/_custom_type_script = "uid://ckyp1lb52okf6"
+
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_7uek1")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://chwdtdjg866d8"
+
+[node name="ChargingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("5_fo7tm")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://clxfjvsgbvi0y"
+
+[node name="SpitState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_506uw")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://coekwvwgp6cpm"
+
+[node name="spitAngle" type="Node2D" parent="."]
+
+[node name="Icon2" type="Sprite2D" parent="spitAngle"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(56, 0)
+scale = Vector2(1, 0.0799996)
+texture = ExtResource("1_vwpa2")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://lhwlh41e2k61"]
+
+[ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="1_wd0yr"]
+[ext_resource type="Script" uid="uid://bod4g4uwhmhou" path="res://scripts/boomerang.gd" id="1_wito0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd0yr"]
+size = Vector2(129, 16)
+
+[node name="Boomerang" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_wito0")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(-1, 0.121111)
+texture = ExtResource("1_wd0yr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_wd0yr")
