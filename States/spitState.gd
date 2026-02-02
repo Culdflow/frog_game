@@ -3,15 +3,19 @@ class_name SpitState
 
 var boomerang = preload("res://Objects/boomerang.tscn")
 var norm_vec_boom: Vector2 = Vector2.ZERO
+@export var dist_multiplier := 10
 
 func _enter():
 	print("[ENTER]: spit")
 	player.isThrowing = true
-	player.spitAngle.look_at(get_viewport().get_mouse_position())
+	player.spitAngle.look_at(player.get_global_mouse_position())
 	var boomerang_instance = boomerang.instantiate()
-	norm_vec_boom = Vector2.from_angle(player.get_angle_to(get_viewport().get_mouse_position()))
+	var mouse_pos := player.get_global_mouse_position()
+	norm_vec_boom = (mouse_pos - player.global_position).normalized()
 	player.get_parent().add_child(boomerang_instance)
-	boomerang_instance._start(norm_vec_boom, player.chargeAmount * 10, player, player.global_position)
+	player.boom = boomerang_instance
+	print(player.boom)
+	boomerang_instance._start(norm_vec_boom, player.chargeAmount * dist_multiplier, player, player.global_position)
 	Transitioned.emit(self, "idlestate")
 
 func _exit():
