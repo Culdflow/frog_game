@@ -15,7 +15,7 @@ func _ready():
 	if initial_state:
 		initial_state._enter()
 		current_state = initial_state
-		#animPlayer.play(current_state.name.to_lower())
+		animPlayer.play(current_state.name.to_lower())
 
 func _process(delta: float) -> void:
 	if current_state:
@@ -35,4 +35,4 @@ func _on_child_transition(state, new_state_name):
 		current_state._exit()
 	current_state = new_state
 	new_state._enter()
-	#animPlayer.play(current_state.name.to_lower())
+	animPlayer.play(current_state.name.to_lower())

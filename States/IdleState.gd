@@ -14,6 +14,8 @@ func _update(_delta: float):
 			Transitioned.emit(self, "chargingstate")
 	if (Input.is_action_just_pressed("action_key") && player.isThrowing && player.boom):
 		Transitioned.emit(self, "teleportingstate")
+	if (player.velocity.y > 10):
+		Transitioned.emit(self, "fallstate")
 
 func _physics_update(_delta: float):
 	pass

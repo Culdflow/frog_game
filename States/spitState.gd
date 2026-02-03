@@ -4,6 +4,10 @@ class_name SpitState
 var boomerang = preload("res://Objects/boomerang.tscn")
 var norm_vec_boom: Vector2 = Vector2.ZERO
 @export var dist_multiplier := 10
+@export var statemachine: StateMachine
+
+func _ready() -> void:
+	statemachine.animPlayer.animation_finished.connect(anim_fin)           
 
 func _enter():
 	print("[ENTER]: spit")
@@ -16,6 +20,8 @@ func _enter():
 	player.boom = boomerang_instance
 	print(player.boom)
 	boomerang_instance._start(norm_vec_boom, player.chargeAmount * dist_multiplier, player, player.global_position)
+
+func anim_fin(anim):
 	Transitioned.emit(self, "idlestate")
 
 func _exit():

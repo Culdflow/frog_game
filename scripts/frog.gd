@@ -36,6 +36,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, friction)
 			velocity.y = 0
 	else:
+		velocity.y += gravity_speed_addr
 		velocity.y = min(velocity.y + gravity_speed_addr * delta, max_fall_speed)
-
 	move_and_slide()

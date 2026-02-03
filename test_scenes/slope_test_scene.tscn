@@ -245,10 +245,8 @@ position = Vector2(581, 587)
 shape = SubResource("SegmentShape2D_q0du1")
 
 [node name="Frog" parent="." instance=ExtResource("3_kkylo")]
-position = Vector2(816, -20)
-friction = 1000
-rotation_lerp = 10.0
-slide_speed = 120.0
+position = Vector2(592, 23)
+max_fall_speed = 5000
 
 [node name="Camera2D" type="Camera2D" parent="Frog"]
 zoom = Vector2(0.5, 0.5)
