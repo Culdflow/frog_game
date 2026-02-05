@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7mr4w0wkjhow"]
+[gd_scene format=3 uid="uid://b7mr4w0wkjhow"]
 
 [ext_resource type="Script" uid="uid://cwfp6yoeurc82" path="res://scripts/frog.gd" id="1_kuh1s"]
 [ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="1_vwpa2"]
@@ -13,17 +13,17 @@
 [ext_resource type="Script" uid="uid://bm0s6yxk14pu6" path="res://States/deadlyFallState.gd" id="9_d8dcx"]
 [ext_resource type="Script" uid="uid://cndy2sasqnnhy" path="res://States/squashState.gd" id="10_087c1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtxdh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0nkt8"]
 shader = ExtResource("2_0nkt8")
-shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 10.0
-shader_parameter/pattern = 2
-shader_parameter/inside = true
-shader_parameter/add_margins = false
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuh1s"]
-size = Vector2(1165, 851)
+size = Vector2(627, 424)
 
 [sub_resource type="Animation" id="Animation_0nkt8"]
 length = 0.001
@@ -199,7 +199,7 @@ _data = {
 &"teleportingstate": SubResource("Animation_4t42x")
 }
 
-[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spitAngle")]
+[node name="Frog" type="CharacterBody2D" unique_id=1212380396 node_paths=PackedStringArray("sprite", "spitAngle")]
 collision_mask = 2
 script = ExtResource("1_kuh1s")
 sprite = NodePath("Icon")
@@ -207,71 +207,69 @@ spitAngle = NodePath("spitAngle")
 max_fall_speed = 10000
 slide_speed = 480.0
 
-[node name="Icon" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_xtxdh")
+[node name="Icon" type="Sprite2D" parent="." unique_id=1163530698]
+material = SubResource("ShaderMaterial_0nkt8")
 texture = ExtResource("2_fny7c")
 hframes = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19.5, 228.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062591563]
+position = Vector2(12.5, 122)
 shape = SubResource("RectangleShape2D_kuh1s")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "animPlayer", "player")]
+[node name="StateMachine" type="Node" parent="." unique_id=976471678 node_paths=PackedStringArray("initial_state", "animPlayer", "player")]
 script = ExtResource("3_ii6tf")
 initial_state = NodePath("IdleState")
 animPlayer = NodePath("../AnimationPlayer")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://ckyp1lb52okf6"
 
-[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=568497460 node_paths=PackedStringArray("player")]
 script = ExtResource("4_7uek1")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://chwdtdjg866d8"
 
-[node name="ChargingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="ChargingState" type="Node" parent="StateMachine" unique_id=10538424 node_paths=PackedStringArray("player")]
 script = ExtResource("5_fo7tm")
 charge_amount_per_second = 60
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://clxfjvsgbvi0y"
 
-[node name="SpitState" type="Node" parent="StateMachine" node_paths=PackedStringArray("statemachine", "player")]
+[node name="SpitState" type="Node" parent="StateMachine" unique_id=1773380709 node_paths=PackedStringArray("statemachine", "player")]
 script = ExtResource("6_506uw")
 dist_multiplier = 200
 statemachine = NodePath("..")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://coekwvwgp6cpm"
 
-[node name="TeleportingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="TeleportingState" type="Node" parent="StateMachine" unique_id=375703590 node_paths=PackedStringArray("player")]
 script = ExtResource("7_jkl5b")
 tp_speed = 12000
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cf1v3tc54pm8y"
 
-[node name="FallState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="FallState" type="Node" parent="StateMachine" unique_id=1661777636 node_paths=PackedStringArray("player")]
 script = ExtResource("8_my3nw")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://6drrxq6e3q2i"
 
-[node name="DeadlyFallState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="DeadlyFallState" type="Node" parent="StateMachine" unique_id=1849365041 node_paths=PackedStringArray("player")]
 script = ExtResource("9_d8dcx")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://bm0s6yxk14pu6"
 
-[node name="SquashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="SquashState" type="Node" parent="StateMachine" unique_id=2076320248 node_paths=PackedStringArray("player")]
 script = ExtResource("10_087c1")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cndy2sasqnnhy"
 
-[node name="spitAngle" type="Node2D" parent="."]
+[node name="spitAngle" type="Node2D" parent="." unique_id=1452613147]
 visible = false
 
-[node name="Icon2" type="Sprite2D" parent="spitAngle"]
+[node name="Icon2" type="Sprite2D" parent="spitAngle" unique_id=511581071]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(56, 0)
 scale = Vector2(1, 0.0799996)
 texture = ExtResource("1_vwpa2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0nkt8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1560830665]
+libraries/ = SubResource("AnimationLibrary_0nkt8")

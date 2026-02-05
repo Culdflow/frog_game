@@ -1,21 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://jpfbf4812qdn"]
+[gd_scene format=3 uid="uid://jpfbf4812qdn"]
 
 [ext_resource type="PackedScene" uid="uid://dqnmqkx4dak5f" path="res://test_scenes/test_scene.tscn" id="1_kj715"]
 [ext_resource type="Texture2D" uid="uid://ckihthlb3xlab" path="res://assets/sky.jpg" id="1_pos46"]
 [ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="2_7lnpk"]
 
-[node name="test_scene_rescaled" type="Node2D"]
+[node name="test_scene_rescaled" type="Node2D" unique_id=1104251805]
 
-[node name="Sky" type="Sprite2D" parent="."]
+[node name="Sky" type="Sprite2D" parent="." unique_id=2042583759]
+modulate = Color(0.4506483, 0.4506483, 0.45064825, 1)
 position = Vector2(3020.5, -12879.5)
 scale = Vector2(10.1185, 92.9361)
 texture = ExtResource("1_pos46")
 
-[node name="test_scene" parent="." instance=ExtResource("1_kj715")]
+[node name="test_scene" parent="." unique_id=553986051 instance=ExtResource("1_kj715")]
 scale = Vector2(5, 5)
 
-[node name="Frog" parent="." instance=ExtResource("2_7lnpk")]
+[node name="Frog" parent="." unique_id=1322990478 instance=ExtResource("2_7lnpk")]
 position = Vector2(2912, -43)
 
-[node name="Camera2D" type="Camera2D" parent="Frog"]
-zoom = Vector2(0.3, 0.3)
+[node name="Camera2D" type="Camera2D" parent="Frog" unique_id=500113470]
+zoom = Vector2(0.2, 0.2)
