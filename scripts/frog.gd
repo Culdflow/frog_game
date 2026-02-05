@@ -4,6 +4,7 @@ class_name Frog
 var chargeAmount = 0
 var isThrowing = false
 var boom: Boomerang = null
+@export var sprite: Sprite2D
 @export var spitAngle: Node2D
 @export var friction: = 1000
 @export var gravity_speed_addr = 100
@@ -12,6 +13,10 @@ var boom: Boomerang = null
 @export var slide_speed := 120.0
 
 func _physics_process(delta: float) -> void:
+	if (get_global_mouse_position().x < global_position.x):
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 	if is_on_floor():
 		var floor_normal := get_floor_normal()
 		var rot_val = get_floor_angle(Vector2.UP)

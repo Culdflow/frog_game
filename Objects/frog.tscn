@@ -1,7 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://b7mr4w0wkjhow"]
+[gd_scene load_steps=24 format=3 uid="uid://b7mr4w0wkjhow"]
 
 [ext_resource type="Script" uid="uid://cwfp6yoeurc82" path="res://scripts/frog.gd" id="1_kuh1s"]
 [ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="1_vwpa2"]
+[ext_resource type="Shader" uid="uid://bedrl2xrl2cqn" path="res://outline.gdshader" id="2_0nkt8"]
+[ext_resource type="Texture2D" uid="uid://c3fatyh7wqxv1" path="res://assets/finished.png" id="2_fny7c"]
 [ext_resource type="Script" uid="uid://ckyp1lb52okf6" path="res://scripts/StateMachine.gd" id="3_ii6tf"]
 [ext_resource type="Script" uid="uid://chwdtdjg866d8" path="res://States/IdleState.gd" id="4_7uek1"]
 [ext_resource type="Script" uid="uid://clxfjvsgbvi0y" path="res://States/chargingState.gd" id="5_fo7tm"]
@@ -11,148 +13,71 @@
 [ext_resource type="Script" uid="uid://bm0s6yxk14pu6" path="res://States/deadlyFallState.gd" id="9_d8dcx"]
 [ext_resource type="Script" uid="uid://cndy2sasqnnhy" path="res://States/squashState.gd" id="10_087c1"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtxdh"]
+shader = ExtResource("2_0nkt8")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuh1s"]
-size = Vector2(127, 128)
-
-[sub_resource type="Animation" id="Animation_087c1"]
-resource_name = "idlestate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_fny7c"]
-resource_name = "squashstate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.370884, 0.022002, 0.106331, 1)]
-}
+size = Vector2(1165, 851)
 
 [sub_resource type="Animation" id="Animation_0nkt8"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:modulate")
+tracks/0/path = NodePath("Icon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:rotation")
+tracks/1/path = NodePath("Icon:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:scale")
+tracks/2/path = NodePath("Icon:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_xtxdh"]
 resource_name = "chargingstate"
-length = 0.1
-loop_mode = 1
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:rotation")
+tracks/0/path = NodePath("Icon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.261799, 0.261799]
-}
-
-[sub_resource type="Animation" id="Animation_niil7"]
-resource_name = "spitstate"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(2.37842, 0.0089742),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.2)]
-}
-
-[sub_resource type="Animation" id="Animation_w1j4w"]
-resource_name = "fallstate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.8, 1)]
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_l4qm5"]
@@ -170,22 +95,97 @@ tracks/0/keys = {
 "values": [Vector2(0.4, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_w1j4w"]
+resource_name = "fallstate"
+
+[sub_resource type="Animation" id="Animation_087c1"]
+resource_name = "idlestate"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Icon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Icon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.19667, 3.40667, 3.79667, 4.06667, 4.37667, 4.62667, 4.82667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_niil7"]
+resource_name = "spitstate"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_fny7c"]
+resource_name = "squashstate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.370884, 0.022002, 0.106331, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_4t42x"]
 resource_name = "teleportingstate"
 length = 0.5
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0nkt8"]
 _data = {
@@ -199,17 +199,21 @@ _data = {
 &"teleportingstate": SubResource("Animation_4t42x")
 }
 
-[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("spitAngle")]
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spitAngle")]
 collision_mask = 2
 script = ExtResource("1_kuh1s")
+sprite = NodePath("Icon")
 spitAngle = NodePath("spitAngle")
 max_fall_speed = 10000
+slide_speed = 480.0
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_vwpa2")
+material = SubResource("ShaderMaterial_xtxdh")
+texture = ExtResource("2_fny7c")
+hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1)
+position = Vector2(19.5, 228.5)
 shape = SubResource("RectangleShape2D_kuh1s")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "animPlayer", "player")]
@@ -232,14 +236,14 @@ metadata/_custom_type_script = "uid://clxfjvsgbvi0y"
 
 [node name="SpitState" type="Node" parent="StateMachine" node_paths=PackedStringArray("statemachine", "player")]
 script = ExtResource("6_506uw")
-dist_multiplier = 20
+dist_multiplier = 200
 statemachine = NodePath("..")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://coekwvwgp6cpm"
 
 [node name="TeleportingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("7_jkl5b")
-tp_speed = 3000
+tp_speed = 12000
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cf1v3tc54pm8y"
 
@@ -259,6 +263,7 @@ player = NodePath("../..")
 metadata/_custom_type_script = "uid://cndy2sasqnnhy"
 
 [node name="spitAngle" type="Node2D" parent="."]
+visible = false
 
 [node name="Icon2" type="Sprite2D" parent="spitAngle"]
 modulate = Color(0, 0, 0, 1)
