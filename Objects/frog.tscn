@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://6drrxq6e3q2i" path="res://States/FallState.gd" id="8_my3nw"]
 [ext_resource type="Script" uid="uid://bm0s6yxk14pu6" path="res://States/deadlyFallState.gd" id="9_d8dcx"]
 [ext_resource type="Script" uid="uid://cndy2sasqnnhy" path="res://States/squashState.gd" id="10_087c1"]
+[ext_resource type="Script" uid="uid://dwx1t0py0fptr" path="res://States/chargeReadyState.gd" id="12_xtxdh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0nkt8"]
 shader = ExtResource("2_0nkt8")
@@ -63,6 +64,36 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/number_of_images")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3s1qi"]
+resource_name = "chargereadystate"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
 
 [sub_resource type="Animation" id="Animation_xtxdh"]
 resource_name = "chargingstate"
@@ -97,6 +128,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_w1j4w"]
 resource_name = "fallstate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/number_of_images")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_087c1"]
 resource_name = "idlestate"
@@ -150,6 +193,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 3, 2, 1, 0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:material:shader_parameter/number_of_images")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_niil7"]
 resource_name = "spitstate"
@@ -184,12 +239,25 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4t42x"]
 resource_name = "teleportingstate"
-length = 0.5
+length = 0.3
 loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/number_of_images")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3.2490118, 14.420007),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 100)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0nkt8"]
 _data = {
 &"RESET": SubResource("Animation_0nkt8"),
+&"chargereadystate": SubResource("Animation_3s1qi"),
 &"chargingstate": SubResource("Animation_xtxdh"),
 &"deadlyfallstate": SubResource("Animation_l4qm5"),
 &"fallstate": SubResource("Animation_w1j4w"),
@@ -228,9 +296,10 @@ script = ExtResource("4_7uek1")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://chwdtdjg866d8"
 
-[node name="ChargingState" type="Node" parent="StateMachine" unique_id=10538424 node_paths=PackedStringArray("player")]
+[node name="ChargingState" type="Node" parent="StateMachine" unique_id=10538424 node_paths=PackedStringArray("statemachine", "player")]
 script = ExtResource("5_fo7tm")
 charge_amount_per_second = 60
+statemachine = NodePath("..")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://clxfjvsgbvi0y"
 
@@ -243,7 +312,7 @@ metadata/_custom_type_script = "uid://coekwvwgp6cpm"
 
 [node name="TeleportingState" type="Node" parent="StateMachine" unique_id=375703590 node_paths=PackedStringArray("player")]
 script = ExtResource("7_jkl5b")
-tp_speed = 12000
+tp_speed = 7000
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cf1v3tc54pm8y"
 
@@ -261,6 +330,13 @@ metadata/_custom_type_script = "uid://bm0s6yxk14pu6"
 script = ExtResource("10_087c1")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cndy2sasqnnhy"
+
+[node name="ChargeReadyState" type="Node" parent="StateMachine" unique_id=279220115 node_paths=PackedStringArray("statemachine", "player")]
+script = ExtResource("12_xtxdh")
+charge_amount_per_second = 60
+statemachine = NodePath("..")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dwx1t0py0fptr"
 
 [node name="spitAngle" type="Node2D" parent="." unique_id=1452613147]
 visible = false
