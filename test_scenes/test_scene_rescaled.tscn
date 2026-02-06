@@ -7,16 +7,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kqwuf"]
 shader = ExtResource("1_xul1v")
-shader_parameter/depth = 0.10000000475
-shader_parameter/width = 0.6510000309225
+shader_parameter/curvature = 1.0000000475
+shader_parameter/time_scale = 0.1
 
 [node name="test_scene_rescaled" type="Node2D" unique_id=1104251805]
 
 [node name="Sky" type="Sprite2D" parent="." unique_id=2042583759]
-modulate = Color(0.4506483, 0.4506483, 0.45064825, 1)
 material = SubResource("ShaderMaterial_kqwuf")
-position = Vector2(2942.4995, -1590.9995)
-scale = Vector2(10.969997, 17.044)
+position = Vector2(2975, -1259.0001)
+scale = Vector2(11.099999, 15.716002)
 texture = ExtResource("2_xul1v")
 
 [node name="test_scene" parent="." unique_id=553986051 instance=ExtResource("1_kj715")]

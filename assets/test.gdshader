@@ -1,32 +1,31 @@
 shader_type canvas_item;
 
-uniform float depth : hint_range(0.0, 0.2) = 0.05;  // Depth of the curve (how much the center bends inward)
-uniform float width : hint_range(0.0, 1.0) = 0.3;   // Width of the curve effect (how wide the effect is)
+uniform float curvature : hint_range(0.0, 1.5) = 0.6;
+uniform float time_scale = 0.1;
 
 void fragment() {
-    // Get the UV coordinates of the sprite (normalized)
+	vec2 center = vec2(0.5, SCREEN_UV.y);
     vec2 uv = UV;
 
-    // Calculate the distance from the vertical center of the sprite (0.5 is the center in UV space)
-    float y_dist = abs(uv.y - 0.5);
+    // Move UVs so (0,0) is the center
+    vec2 p = uv - center;
+	p.x *= 1.2; // before computing r
+    float r = length(p);
 
-    // Apply a smooth curve (sinusoidal effect) for the inward curvature
-    // The effect should be strongest at the top and bottom edges and weaker toward the center
-    float curve_factor = (1.0 - y_dist) * depth * sin(y_dist * 3.14159);  // Sine curve for smooth falloff
+    // Reverse fisheye (barrel distortion)
+    // Higher powers = stronger edge pull, stable center
+    float distortion = 1.0 + curvature * r * r * (1.0 + sin(TIME * time_scale) * 0.05);
 
-    // Apply the curve effect to the Y-coordinate (this simulates the inward curve)
-    if (uv.y < 0.5)
-        uv.y -= curve_factor;  // Apply upward curvature for the top (pull inward)
-    else
-        uv.y += curve_factor;  // Apply downward curvature for the bottom (push inward)
+    p /= distortion;
 
-    // Ensure the UVs stay within the bounds of the texture (0 to 1)
-    uv.x = clamp(uv.x, 0.0, 1.0);
-    uv.y = clamp(uv.y, 0.0, 1.0);
+    uv = p + center;
 
-    // Fetch the texture color using the modified UV coordinates
     COLOR = texture(TEXTURE, uv);
 }
+
+
+
+
 
 
 
