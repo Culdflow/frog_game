@@ -1,8 +1,22 @@
 [gd_scene format=3 uid="uid://dqnmqkx4dak5f"]
 
+[ext_resource type="Script" uid="uid://dj82o0i1t0lg5" path="res://test_scenes/test_scene.gd" id="1_rrv6s"]
+[ext_resource type="Texture2D" uid="uid://cijj1633qbah1" path="res://assets/stone_texture.png" id="1_s84uv"]
 [ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="2_e5rb5"]
 [ext_resource type="Texture2D" uid="uid://b3seoar6mai6h" path="res://assets/wall_ledge.png" id="2_kymn1"]
 [ext_resource type="Script" uid="uid://c8gvys7y3m52o" path="res://scripts/slope.gd" id="3_kymn1"]
+[ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="4_ifg33"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifg33"]
+cull_mode = 1
+albedo_texture = ExtResource("1_s84uv")
+uv1_scale = Vector3(6, 6, 6)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s84uv"]
+material = SubResource("StandardMaterial3D_ifg33")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s84uv"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5rb5"]
 size = Vector2(1167, 100)
@@ -15,7 +29,35 @@ a = Vector2(-591, 60)
 b = Vector2(527, -44)
 
 [node name="test_scene" type="Node2D" unique_id=420823285]
+script = ExtResource("1_rrv6s")
 metadata/_edit_horizontal_guides_ = [1399.0]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=747443878]
+offset_left = -2295.0
+offset_top = -348.0
+offset_right = -1783.0
+offset_bottom = 164.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1594109776]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=998539207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.79758024)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=1145027153]
+transform = Transform3D(0.9874089, 0.15712401, 0.018324653, -0.024529122, 0.037639886, 0.9989903, 0.15627562, -0.98686147, 0.041020095, 0, 1.9553602, -0.02695024)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1967533051]
+transform = Transform3D(1, 0, 0, 0, 1.334719, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_s84uv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1187104475]
+position = Vector2(584.5, -226)
+scale = Vector2(2.6191409, 2.96875)
+texture = SubResource("ViewportTexture_s84uv")
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=967816601]
 collision_layer = 2
@@ -37,9 +79,10 @@ scale = Vector2(6.84, 1)
 collision_layer = 2
 
 [node name="Icon" type="Sprite2D" parent="floor2" unique_id=1270319143]
+modulate = Color(0, 0, 0, 1)
 texture_repeat = 2
-position = Vector2(635.52576, 1741.3267)
-scale = Vector2(0.49063954, 4.793382)
+position = Vector2(491.3, 588.9067)
+scale = Vector2(1.875028, 0.18370205)
 texture = SubResource("CompressedTexture2D_kymn1")
 offset = Vector2(2, 0)
 
@@ -192,3 +235,9 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slope2" unique_id=489562129]
 position = Vector2(296, 619)
 shape = SubResource("SegmentShape2D_e5rb5")
+
+[node name="Frog" parent="." unique_id=1212380396 instance=ExtResource("4_ifg33")]
+position = Vector2(488, -24)
+
+[node name="Camera2D" type="Camera2D" parent="Frog" unique_id=287461353]
+zoom = Vector2(0.8, 0.8)

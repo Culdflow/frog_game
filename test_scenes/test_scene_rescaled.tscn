@@ -1,22 +1,35 @@
 [gd_scene format=3 uid="uid://jpfbf4812qdn"]
 
 [ext_resource type="PackedScene" uid="uid://dqnmqkx4dak5f" path="res://test_scenes/test_scene.tscn" id="1_kj715"]
-[ext_resource type="Shader" uid="uid://bxx4xststb6m4" path="res://assets/test.gdshader" id="1_xul1v"]
 [ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="2_7lnpk"]
 [ext_resource type="Texture2D" uid="uid://cijj1633qbah1" path="res://assets/stone_texture.png" id="2_xul1v"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqwuf"]
-shader = ExtResource("1_xul1v")
-shader_parameter/curvature = 1.0000000475
-shader_parameter/time_scale = 0.1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pos46"]
+cull_mode = 1
+albedo_texture = ExtResource("2_xul1v")
+uv1_scale = Vector3(4, 4, 4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_anx7g"]
+material = SubResource("StandardMaterial3D_pos46")
 
 [node name="test_scene_rescaled" type="Node2D" unique_id=1104251805]
 
-[node name="Sky" type="Sprite2D" parent="." unique_id=2042583759]
-material = SubResource("ShaderMaterial_kqwuf")
-position = Vector2(2975, -1259.0001)
-scale = Vector2(11.099999, 15.716002)
-texture = ExtResource("2_xul1v")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1468063257]
+offset_left = -425.0
+offset_top = -6920.0
+offset_right = 6575.0
+offset_bottom = 3080.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=642983510]
+handle_input_locally = false
+size = Vector2i(10, 10000)
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1118834557]
+mesh = SubResource("CylinderMesh_anx7g")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1687519284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0576621, 0.8729367)
 
 [node name="test_scene" parent="." unique_id=553986051 instance=ExtResource("1_kj715")]
 scale = Vector2(5, 5)

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://core0vbvdf0wa"]
+
+[ext_resource type="Script" uid="uid://50jbw18b43bo" path="res://scripts/playerCamera.gd" id="1_gtnvv"]
+[ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="1_s41d2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s41d2"]
+size = Vector2(1981, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtnvv"]
+size = Vector2(152, 4212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wav5q"]
+size = Vector2(152, 4212)
+
+[node name="Level" type="Node2D" unique_id=1925054201]
+
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1273011704 node_paths=PackedStringArray("frog")]
+script = ExtResource("1_gtnvv")
+follow_x = false
+frog = NodePath("../Frog")
+metadata/_custom_type_script = "uid://50jbw18b43bo"
+
+[node name="Frog" parent="." unique_id=1212380396 instance=ExtResource("1_s41d2")]
+position = Vector2(903, 350)
+
+[node name="Floors" type="Node2D" parent="." unique_id=1409959697]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floors" unique_id=1250453293]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D" unique_id=1439370962]
+position = Vector2(977.5, 1086)
+shape = SubResource("RectangleShape2D_s41d2")
+
+[node name="Walls" type="Node2D" parent="." unique_id=2042915956]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" unique_id=1441298650]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=1669572709]
+position = Vector2(-70, -1079)
+shape = SubResource("RectangleShape2D_gtnvv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls" unique_id=1122733291]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2" unique_id=832061058]
+position = Vector2(2041, -1079)
+shape = SubResource("RectangleShape2D_wav5q")
+
+[node name="Ledges" type="Node2D" parent="." unique_id=828176805]

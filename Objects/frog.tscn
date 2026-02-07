@@ -24,7 +24,7 @@ shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuh1s"]
-size = Vector2(627, 424)
+size = Vector2(120, 75)
 
 [sub_resource type="Animation" id="Animation_0nkt8"]
 length = 0.001
@@ -43,34 +43,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:scale")
+tracks/1/path = NodePath("Icon:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:modulate")
+tracks/2/path = NodePath("Icon:material:shader_parameter/number_of_images")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Icon:material:shader_parameter/number_of_images")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -113,18 +101,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_l4qm5"]
 resource_name = "deadlyfallstate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.4, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_w1j4w"]
 resource_name = "fallstate"
@@ -171,35 +147,23 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("Icon:scale")
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Icon:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 3.19667, 3.40667, 3.79667, 4.06667, 4.37667, 4.62667, 4.82667, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 3, 2, 1, 0]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Icon:material:shader_parameter/number_of_images")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/number_of_images")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -272,16 +236,18 @@ collision_mask = 2
 script = ExtResource("1_kuh1s")
 sprite = NodePath("Icon")
 spitAngle = NodePath("spitAngle")
-max_fall_speed = 10000
+gravity_speed_addr = 50
+max_fall_speed = 7000
 slide_speed = 480.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1163530698]
 material = SubResource("ShaderMaterial_0nkt8")
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_fny7c")
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062591563]
-position = Vector2(12.5, 122)
+position = Vector2(1, 31.5)
 shape = SubResource("RectangleShape2D_kuh1s")
 
 [node name="StateMachine" type="Node" parent="." unique_id=976471678 node_paths=PackedStringArray("initial_state", "animPlayer", "player")]
@@ -312,7 +278,7 @@ metadata/_custom_type_script = "uid://coekwvwgp6cpm"
 
 [node name="TeleportingState" type="Node" parent="StateMachine" unique_id=375703590 node_paths=PackedStringArray("player")]
 script = ExtResource("7_jkl5b")
-tp_speed = 7000
+tp_speed = 3500
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cf1v3tc54pm8y"
 

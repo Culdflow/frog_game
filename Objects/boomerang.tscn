@@ -4,20 +4,19 @@
 [ext_resource type="Script" uid="uid://bod4g4uwhmhou" path="res://scripts/boomerang.gd" id="1_wito0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd0yr"]
-size = Vector2(299, 42)
+size = Vector2(106, 17)
 
 [node name="Boomerang" type="CharacterBody2D" unique_id=852341950]
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_wito0")
-speed = 5000
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1961889482]
-position = Vector2(86.649445, -13.559935)
-scale = Vector2(-2.3538976, 0.33298495)
+position = Vector2(-13.175568, -2.2464275)
+scale = Vector2(-0.79413176, 0.1562114)
 texture = ExtResource("1_wd0yr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1014146607]
-position = Vector2(85.5, -13)
+position = Vector2(-11, -0.5)
 shape = SubResource("RectangleShape2D_wd0yr")
