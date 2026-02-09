@@ -1,3 +1,4 @@
 res://Levels/level.tscn
 res://Objects/frog.tscn
-res://States/teleportingState.gd
+res://States/slidingState.gd
+res://States/FallState.gd

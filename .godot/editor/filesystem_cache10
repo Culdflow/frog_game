@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1770596309
+::res://::1770602551
 icon.svg::CompressedTexture2D::6337121772779308370::1770596219::1770596310::1::::<><><>0<>0<>c2158be5ade02dd15f003a0d68a8f4ae<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 outline.gdshader::Shader::2674422478566515101::1770596219::0::1::::<><><>0<>0<><>::
 ::res://addons/::1770596219
@@ -10,7 +10,7 @@ shader_card.gd::GDScript::2820217345337414077::1770596219::0::1::::<>PanelContai
 shader_card.tscn::PackedScene::8666190703512917291::1770596219::0::1::::<><><>0<>0<><>::uid://bggetkgqfnl70::::res://addons/gdshader/shader_card.gd
 shader_lib_view.gd::GDScript::303771519031240007::1770596219::0::1::::<>Control<><>0<>1<><>::
 shader_lib_view.tscn::PackedScene::1308198402244726079::1770596219::0::1::::<><><>0<>0<><>::uid://elfcp38vplul::::res://addons/gdshader/shader_lib_view.gd
-::res://addons/plugin_refresher/::1770596219
+::res://addons/plugin_refresher/::1770596310
 plugin.cfg::TextFile::-1::1770596219::0::1::::<><><>0<>0<><>::
 plugin_refresher.gd::GDScript::7334608805464459165::1770596219::0::1::::<>EditorPlugin<><>0<>1<><>::
 plug_icon.svg::CompressedTexture2D::3170483506068838676::1770596219::1770596310::1::::<><><>0<>0<>39420f563470cc80073ca562421fbde1<>res://.godot/imported/plug_icon.svg-b180bca47232308b352da81a86bc8fad.ctex::
@@ -18,17 +18,17 @@ plug_list_icon.svg::CompressedTexture2D::7206753774499734931::1770596219::177059
 plug_switch_icon.svg::CompressedTexture2D::6860064338449721077::1770596219::1770596310::1::::<><><>0<>0<>d9da4a9d40b97a828400772bcd872592<>res://.godot/imported/plug_switch_icon.svg-27457c2578fbae9881f008235eeaee3b.ctex::
 refresh_button.gd::GDScript::4636043118714175497::1770596219::0::1::::<>Control<><>0<>1<><>::
 refresh_button.tscn::PackedScene::3847714966603422025::1770596219::0::1::::<><><>0<>0<><>::res://addons/plugin_refresher/refresh_button.gd
-::res://assets/::1770596219
+::res://assets/::1770596313
 finished.png::CompressedTexture2D::6748486080963624288::1770596219::1770596313::1::::<><><>0<>0<>4a8b5b2d0a3dbd38af2e33277994252d<>res://.godot/imported/finished.png-6b50f7db41212e87c74a1e46ab831736.ctex::
 mur_perspective.png::CompressedTexture2D::5379723320832968624::1770596219::1770596310::1::::<><><>0<>0<>673ed1a08779fd08f318fdf4345ac9b0<>res://.godot/imported/mur_perspective.png-a96c6e186ba1bfb93e397a61c785407e.ctex::
 sky.jpg::CompressedTexture2D::5491704159572631557::1770596219::1770596310::1::::<><><>0<>0<>daf4add481ab3636253dddd15fe0bdd8<>res://.godot/imported/sky.jpg-54a4f35421c7d14ab9141088d14ba440.ctex::
 stone_texture.png::CompressedTexture2D::5353526072625415568::1770596219::1770596311::1::::<><><>0<>0<>3f4e45b5c2428e87f4e32b44c7c94edd<>res://.godot/imported/stone_texture.png-6911a31ab06181b11b405bb4b7e361d5.s3tc.ctex::
 wall_ledge.png::CompressedTexture2D::4389135001903037733::1770596219::1770596310::1::::<><><>0<>0<>11d672bba557e7dcc939640da1797c02<>res://.godot/imported/wall_ledge.png-f0219405e2a24a3f534dbede3e844c48.ctex::
-::res://Levels/::1770596219
-level.tscn::PackedScene::5790868218449896456::1770596219::0::1::::<><><>0<>0<><>::uid://50jbw18b43bo::::res://scripts/playerCamera.gd<>uid://b7mr4w0wkjhow::::res://Objects/frog.tscn
-::res://Objects/::1770596219
+::res://Levels/::1770601681
+level.tscn::PackedScene::5790868218449896456::1770601681::0::1::::<><><>0<>0<><>::uid://50jbw18b43bo::::res://scripts/playerCamera.gd<>uid://b7mr4w0wkjhow::::res://Objects/frog.tscn
+::res://Objects/::1770601664
 boomerang.tscn::PackedScene::787883755521110008::1770596219::0::1::::<><><>0<>0<><>::uid://cwj0p8amtygjy::::res://icon.svg<>uid://bod4g4uwhmhou::::res://scripts/boomerang.gd
-frog.tscn::PackedScene::4658321385206245110::1770596219::0::1::::<><><>0<>0<><>::uid://cwfp6yoeurc82::::res://scripts/frog.gd<>uid://cwj0p8amtygjy::::res://icon.svg<>uid://bedrl2xrl2cqn::::res://outline.gdshader<>uid://c3fatyh7wqxv1::::res://assets/finished.png<>uid://ckyp1lb52okf6::::res://scripts/StateMachine.gd<>uid://chwdtdjg866d8::::res://States/IdleState.gd<>uid://clxfjvsgbvi0y::::res://States/chargingState.gd<>uid://coekwvwgp6cpm::::res://States/spitState.gd<>uid://cf1v3tc54pm8y::::res://States/teleportingState.gd<>uid://6drrxq6e3q2i::::res://States/FallState.gd<>uid://bm0s6yxk14pu6::::res://States/deadlyFallState.gd<>uid://cndy2sasqnnhy::::res://States/squashState.gd<>uid://dwx1t0py0fptr::::res://States/chargeReadyState.gd
+frog.tscn::PackedScene::4658321385206245110::1770601664::0::1::::<><><>0<>0<><>::uid://cwfp6yoeurc82::::res://scripts/frog.gd<>uid://cwj0p8amtygjy::::res://icon.svg<>uid://bedrl2xrl2cqn::::res://outline.gdshader<>uid://c3fatyh7wqxv1::::res://assets/finished.png<>uid://ckyp1lb52okf6::::res://scripts/StateMachine.gd<>uid://chwdtdjg866d8::::res://States/IdleState.gd<>uid://clxfjvsgbvi0y::::res://States/chargingState.gd<>uid://coekwvwgp6cpm::::res://States/spitState.gd<>uid://cf1v3tc54pm8y::::res://States/teleportingState.gd<>uid://6drrxq6e3q2i::::res://States/FallState.gd<>uid://bm0s6yxk14pu6::::res://States/deadlyFallState.gd<>uid://cndy2sasqnnhy::::res://States/squashState.gd<>uid://dwx1t0py0fptr::::res://States/chargeReadyState.gd
 ::res://scripts/::1770596219
 boomerang.gd::GDScript::3377030690524047004::1770596219::0::1::::Boomerang<>CharacterBody2D<><>0<>0<><>::
 frog.gd::GDScript::6328285213092567501::1770596219::0::1::::Frog<>CharacterBody2D<><>0<>0<><>::
@@ -36,7 +36,7 @@ playerCamera.gd::GDScript::2157824188901764536::1770596219::0::1::::PlayerCamera
 slope.gd::GDScript::7102778385849861436::1770596219::0::1::::Slope<>StaticBody2D<><>0<>0<><>::
 State.gd::GDScript::2493129557034789361::1770596219::0::1::::State<>Node<><>0<>0<><>::
 StateMachine.gd::GDScript::5525232636098346641::1770596219::0::1::::StateMachine<>Node<><>0<>0<><>::
-::res://States/::1770596219
+::res://States/::1770601681
 chargeReadyState.gd::GDScript::8752511208735404491::1770596219::0::1::::ChargeReadyState<>State<><>0<>0<><>::
 chargingState.gd::GDScript::5592720123928526466::1770596219::0::1::::ChargingState<>State<><>0<>0<><>::
 deadlyFallState.gd::GDScript::3281445813262994059::1770596219::0::1::::DeadlyFallState<>State<><>0<>0<><>::
@@ -44,7 +44,7 @@ FallState.gd::GDScript::2183111067583483742::1770596219::0::1::::FallState<>Stat
 IdleState.gd::GDScript::5309795836295492491::1770596219::0::1::::IdleState<>State<><>0<>0<><>::
 spitState.gd::GDScript::5764390283998395962::1770596219::0::1::::SpitState<>State<><>0<>0<><>::
 squashState.gd::GDScript::5692995838464677602::1770596219::0::1::::SquashState<>State<><>0<>0<><>::
-teleportingState.gd::GDScript::5178785468695033650::1770596219::0::1::::TeleportingState<>State<><>0<>0<><>::
+teleportingState.gd::GDScript::5178785468695033650::1770601681::0::1::::TeleportingState<>State<><>0<>0<><>::
 ::res://test_scenes/::1770596219
 slope_test_scene.tscn::PackedScene::6195080375785025909::1770596219::0::1::::<><><>0<>0<><>::uid://cwj0p8amtygjy::::res://icon.svg<>uid://c8gvys7y3m52o::::res://scripts/slope.gd<>uid://b7mr4w0wkjhow::::res://Objects/frog.tscn
 test_scene.gd::GDScript::7860751796274826190::1770596219::0::1::::<>Node2D<><>0<>0<><>::

@@ -15,6 +15,12 @@ size = Vector2(152, 4212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xto7t"]
 size = Vector2(270, 93)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhyyw"]
+size = Vector2(270, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t80w2"]
+size = Vector2(270, 93)
+
 [node name="Level" type="Node2D" unique_id=1925054201]
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1273011704 node_paths=PackedStringArray("frog")]
@@ -25,6 +31,7 @@ metadata/_custom_type_script = "uid://50jbw18b43bo"
 
 [node name="Frog" parent="." unique_id=1212380396 instance=ExtResource("1_s41d2")]
 position = Vector2(903, 350)
+friction = 100
 
 [node name="Floors" type="Node2D" parent="." unique_id=1409959697]
 
@@ -62,3 +69,19 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=984547363]
 shape = SubResource("RectangleShape2D_xto7t")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Ledges" unique_id=1390166463]
+position = Vector2(1854, 14)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D2" unique_id=1704414216]
+shape = SubResource("RectangleShape2D_uhyyw")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Ledges" unique_id=416350859]
+position = Vector2(370, -438)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D3" unique_id=309162068]
+shape = SubResource("RectangleShape2D_t80w2")

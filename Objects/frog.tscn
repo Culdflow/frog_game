@@ -236,6 +236,7 @@ collision_mask = 2
 script = ExtResource("1_kuh1s")
 sprite = NodePath("Icon")
 spitAngle = NodePath("spitAngle")
+friction = 10
 gravity_speed_addr = 50
 max_fall_speed = 7000
 slide_speed = 480.0
