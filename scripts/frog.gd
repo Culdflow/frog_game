@@ -4,6 +4,7 @@ class_name Frog
 var chargeAmount = 0
 var isThrowing = false
 var boom: Boomerang = null
+var last_vel = Vector2(0, 0)
 @export var sprite: Sprite2D
 @export var spitAngle: Node2D
 @export var friction: = 1000
@@ -44,3 +45,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity_speed_addr
 		velocity.y = min(velocity.y + gravity_speed_addr * delta, max_fall_speed)
 	move_and_slide()
+	if get_slide_collision_count() > 0:
+		var collision := get_slide_collision(0)
+		if is_on_wall():
+			velocity.x = -(last_vel.x / 2)
+	last_vel = velocity
+
+func _process(delta: float) -> void:
+	sprite.global_position = global_position

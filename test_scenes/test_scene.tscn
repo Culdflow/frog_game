@@ -55,8 +55,8 @@ transform = Transform3D(1, 0, 0, 0, 1.334719, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_s84uv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1187104475]
-position = Vector2(584.5, -226)
-scale = Vector2(2.6191409, 2.96875)
+position = Vector2(557.75, -243)
+scale = Vector2(3.2314456, 2.96875)
 texture = SubResource("ViewportTexture_s84uv")
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=967816601]

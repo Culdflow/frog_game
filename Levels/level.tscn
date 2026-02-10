@@ -2,6 +2,20 @@
 
 [ext_resource type="Script" uid="uid://50jbw18b43bo" path="res://scripts/playerCamera.gd" id="1_gtnvv"]
 [ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="1_s41d2"]
+[ext_resource type="Script" uid="uid://dj82o0i1t0lg5" path="res://test_scenes/test_scene.gd" id="1_uhyyw"]
+[ext_resource type="Texture2D" uid="uid://bvsp3r4cdp8n4" path="res://assets/bottom_well_floor.png" id="3_wav5q"]
+[ext_resource type="Texture2D" uid="uid://cijj1633qbah1" path="res://assets/stone_texture.png" id="4_xto7t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhyyw"]
+cull_mode = 1
+albedo_texture = ExtResource("4_xto7t")
+uv1_scale = Vector3(6, 6, 6)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t80w2"]
+material = SubResource("StandardMaterial3D_uhyyw")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xto7t"]
+viewport_path = NodePath("background/SubViewportContainer/SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s41d2"]
 size = Vector2(1981, 118)
@@ -19,9 +33,60 @@ size = Vector2(270, 93)
 size = Vector2(270, 93)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t80w2"]
-size = Vector2(270, 93)
+size = Vector2(547, 93)
 
-[node name="Level" type="Node2D" unique_id=1925054201]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a2b0"]
+size = Vector2(547, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecu0b"]
+size = Vector2(547, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2u7g"]
+size = Vector2(547, 93)
+
+[node name="Level" type="Node2D" unique_id=1925054201 node_paths=PackedStringArray("mesh", "light", "camera", "player", "back_sprite")]
+script = ExtResource("1_uhyyw")
+mesh = NodePath("background/SubViewportContainer/SubViewport/MeshInstance3D")
+light = NodePath("background/SubViewportContainer/SubViewport/SpotLight3D")
+camera = NodePath("background/SubViewportContainer/SubViewport/Camera3D")
+player = NodePath("Frog")
+back_sprite = NodePath("background/background_sprite")
+
+[node name="background" type="Node2D" parent="." unique_id=429968201]
+position = Vector2(-1365, 253)
+
+[node name="ColorRect" type="ColorRect" parent="background" unique_id=600707606]
+offset_left = -2199.0
+offset_top = -4104.0
+offset_right = 6127.0
+offset_bottom = 3458.0
+color = Color(0, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="background" unique_id=265829065]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="background/SubViewportContainer" unique_id=1418319355]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background/SubViewportContainer/SubViewport" unique_id=244235736]
+transform = Transform3D(1.1528758, 0, 0, 0, 1.4014485, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_t80w2")
+
+[node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport" unique_id=903408941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7457656)
+fov = 88.805145
+
+[node name="SpotLight3D" type="SpotLight3D" parent="background/SubViewportContainer/SubViewport" unique_id=133180700]
+transform = Transform3D(1, 0, 0, 0, 0.5359742, 0.84423435, 0, -0.84423435, 0.5359742, 0, 2.00036, 0.7820145)
+spot_range = 3.9009933
+spot_angle = 38.97244
+
+[node name="background_sprite" type="Sprite2D" parent="background" unique_id=1067639204]
+position = Vector2(2345.5, -368)
+scale = Vector2(3.8066406, 4.4648438)
+texture = SubResource("ViewportTexture_xto7t")
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1273011704 node_paths=PackedStringArray("frog")]
 script = ExtResource("1_gtnvv")
@@ -30,13 +95,18 @@ frog = NodePath("../Frog")
 metadata/_custom_type_script = "uid://50jbw18b43bo"
 
 [node name="Frog" parent="." unique_id=1212380396 instance=ExtResource("1_s41d2")]
-position = Vector2(903, 350)
+position = Vector2(1097, 335)
 friction = 100
 
 [node name="Floors" type="Node2D" parent="." unique_id=1409959697]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Floors" unique_id=1250453293]
 collision_layer = 2
+
+[node name="BottomWellFloor" type="Sprite2D" parent="Floors/StaticBody2D" unique_id=1278523551]
+position = Vector2(982, 1096.0001)
+scale = Vector2(0.49218795, 0.49218795)
+texture = ExtResource("3_wav5q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D" unique_id=1439370962]
 position = Vector2(977.5, 1086)
@@ -71,7 +141,7 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_xto7t")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Ledges" unique_id=1390166463]
-position = Vector2(1854, 14)
+position = Vector2(1854, -178)
 collision_layer = 2
 collision_mask = 5
 
@@ -79,9 +149,54 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_uhyyw")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Ledges" unique_id=416350859]
-position = Vector2(370, -438)
+position = Vector2(1826, -873)
 collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D3" unique_id=309162068]
+position = Vector2(-138.5, 0)
 shape = SubResource("RectangleShape2D_t80w2")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Ledges" unique_id=19716416]
+position = Vector2(2026, -2063)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D5" unique_id=1167082247]
+position = Vector2(-138.5, 0)
+shape = SubResource("RectangleShape2D_8a2b0")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Ledges" unique_id=1982131212]
+position = Vector2(-60, -2608)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D6" unique_id=1900882797]
+position = Vector2(-138.5, 0)
+shape = SubResource("RectangleShape2D_ecu0b")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Ledges" unique_id=1540820774]
+position = Vector2(960, -3383)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D7" unique_id=1864448752]
+position = Vector2(-138.5, 0)
+shape = SubResource("RectangleShape2D_t2u7g")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Ledges" unique_id=897311686]
+position = Vector2(2046, -3389)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D8" unique_id=1168892774]
+position = Vector2(-138.5, 0)
+shape = SubResource("RectangleShape2D_t2u7g")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Ledges" unique_id=1374642511]
+position = Vector2(-38, -1739)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ledges/StaticBody2D4" unique_id=2010143136]
+polygon = PackedVector2Array(0, 0, 800, 250, 0, 150)

@@ -1,4 +1,11 @@
+res://test_scenes/test_scene.tscn
 res://Levels/level.tscn
+res://Objects/boomerang.tscn
+res://scripts/boomerang.gd
 res://Objects/frog.tscn
-res://States/slidingState.gd
+res://States/teleportingState.gd
+res://scripts/player_line.gd
+res://scripts/frog.gd
 res://States/FallState.gd
+res://States/chargeReadyState.gd
+res://test_scenes/test_scene.gd

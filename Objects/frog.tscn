@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3fatyh7wqxv1" path="res://assets/finished.png" id="2_fny7c"]
 [ext_resource type="Script" uid="uid://ckyp1lb52okf6" path="res://scripts/StateMachine.gd" id="3_ii6tf"]
 [ext_resource type="Script" uid="uid://chwdtdjg866d8" path="res://States/IdleState.gd" id="4_7uek1"]
+[ext_resource type="Script" uid="uid://r6mjtatw7fnm" path="res://scripts/player_line.gd" id="4_niil7"]
 [ext_resource type="Script" uid="uid://clxfjvsgbvi0y" path="res://States/chargingState.gd" id="5_fo7tm"]
 [ext_resource type="Script" uid="uid://coekwvwgp6cpm" path="res://States/spitState.gd" id="6_506uw"]
 [ext_resource type="Script" uid="uid://cf1v3tc54pm8y" path="res://States/teleportingState.gd" id="7_jkl5b"]
@@ -22,6 +23,10 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="Curve" id="Curve_niil7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuh1s"]
 size = Vector2(120, 75)
@@ -242,10 +247,20 @@ max_fall_speed = 7000
 slide_speed = 480.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1163530698]
+top_level = true
 material = SubResource("ShaderMaterial_0nkt8")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_fny7c")
 hframes = 12
+
+[node name="Line2D" type="Line2D" parent="Icon" unique_id=1765817532 node_paths=PackedStringArray("sprite")]
+visible = false
+top_level = true
+z_index = -1
+width = 50.0
+width_curve = SubResource("Curve_niil7")
+script = ExtResource("4_niil7")
+sprite = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062591563]
 position = Vector2(1, 31.5)
@@ -272,14 +287,15 @@ metadata/_custom_type_script = "uid://clxfjvsgbvi0y"
 
 [node name="SpitState" type="Node" parent="StateMachine" unique_id=1773380709 node_paths=PackedStringArray("statemachine", "player")]
 script = ExtResource("6_506uw")
-dist_multiplier = 200
+dist_multiplier = 50
 statemachine = NodePath("..")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://coekwvwgp6cpm"
 
-[node name="TeleportingState" type="Node" parent="StateMachine" unique_id=375703590 node_paths=PackedStringArray("player")]
+[node name="TeleportingState" type="Node" parent="StateMachine" unique_id=375703590 node_paths=PackedStringArray("line", "player")]
 script = ExtResource("7_jkl5b")
 tp_speed = 3500
+line = NodePath("../../Icon/Line2D")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cf1v3tc54pm8y"
 

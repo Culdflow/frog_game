@@ -9,7 +9,7 @@ var tween = null
 func _enter():
 	print("[ENTER]: charge ready")
 	tween = get_tree().create_tween()
-	tween.tween_property(player, "modulate", Color.RED, 2)
+	tween.tween_property(player.sprite, "modulate", Color.RED, 2)
 
 func _exit():
 	print("[EXIT]: charge ready")
@@ -21,7 +21,7 @@ func _update(_delta: float):
 	if (Input.is_action_just_released("action_key") or player.chargeAmount >= max_charge_amount):
 		statemachine.animPlayer.speed_scale = 1.0
 		tween.kill()
-		player.modulate = Color.WHITE
+		player.sprite.modulate = Color.WHITE
 		Transitioned.emit(self, "spitstate")
 
 func _physics_update(_delta: float):

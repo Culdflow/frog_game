@@ -3,6 +3,7 @@ class_name Boomerang
 
 @export var speed: int = 1000
 @export var turn_speed := 8.0
+var bounce_list: Array[Vector2] = []
 var max_dist = 100
 var frog: Frog
 var dist = 0
@@ -24,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	if get_slide_collision_count() > 0:
 		var collision := get_slide_collision(0)
 		velocity = velocity.bounce(collision.get_normal())
+		bounce_list.append(global_position)
 
 	# ---- DESPAWN ----
 	if returning and global_position.distance_to(frog.global_position) < 40:
@@ -34,13 +36,10 @@ func _start(_vel: Vector2, _dist: int, _frog: Frog, pos: Vector2):
 	max_dist = _dist
 	frog = _frog
 	global_position = pos
+	bounce_list.append(global_position)
 	dist = 0
 
 func _despawn():
 	frog.isThrowing = false
 	frog.boom = null
 	queue_free()
-
-
-func _on_wall_detection_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
