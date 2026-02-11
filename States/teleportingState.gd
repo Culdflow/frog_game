@@ -2,7 +2,6 @@ extends State
 class_name TeleportingState
 
 @export var tp_speed = 100
-@export var line: Line2D
 var kept_vel = Vector2(0, 0)
 var last_tp_tweem
 var tp_tween
@@ -10,7 +9,6 @@ var last_gravity_addr
 
 func _enter():
 	print("[ENTER]: teleporting")
-	line.visible = true
 	last_gravity_addr = player.gravity_speed_addr
 	player.gravity_speed_addr = 0
 	player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -45,7 +43,6 @@ func _exit():
 	player.gravity_speed_addr = last_gravity_addr
 	player.collision_layer = 1
 	player.collision_mask = 2
-	line.visible = false
 
 func _update(_delta: float):
 	player.rotation = 0

@@ -1,5 +1,6 @@
 extends State
 class_name IdleState
+@export var line: Line2D
 
 func _enter():
 	print("[ENTER]: idle")

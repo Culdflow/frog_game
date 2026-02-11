@@ -248,15 +248,14 @@ slide_speed = 480.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1163530698]
 top_level = true
+z_index = 5
 material = SubResource("ShaderMaterial_0nkt8")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_fny7c")
 hframes = 12
 
 [node name="Line2D" type="Line2D" parent="Icon" unique_id=1765817532 node_paths=PackedStringArray("sprite")]
-visible = false
 top_level = true
-z_index = -1
 width = 50.0
 width_curve = SubResource("Curve_niil7")
 script = ExtResource("4_niil7")
@@ -292,10 +291,9 @@ statemachine = NodePath("..")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://coekwvwgp6cpm"
 
-[node name="TeleportingState" type="Node" parent="StateMachine" unique_id=375703590 node_paths=PackedStringArray("line", "player")]
+[node name="TeleportingState" type="Node" parent="StateMachine" unique_id=375703590 node_paths=PackedStringArray("player")]
 script = ExtResource("7_jkl5b")
-tp_speed = 3500
-line = NodePath("../../Icon/Line2D")
+tp_speed = 2000
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cf1v3tc54pm8y"
 
