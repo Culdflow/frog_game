@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://50jbw18b43bo" path="res://scripts/playerCamera.gd" id="1_gtnvv"]
 [ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="1_s41d2"]
 [ext_resource type="Script" uid="uid://dj82o0i1t0lg5" path="res://test_scenes/test_scene.gd" id="1_uhyyw"]
+[ext_resource type="Texture2D" uid="uid://c1aaicnt5gn8c" path="res://assets/background_wall.png" id="2_8a2b0"]
 [ext_resource type="Texture2D" uid="uid://bvsp3r4cdp8n4" path="res://assets/bottom_well_floor.png" id="3_wav5q"]
-[ext_resource type="Texture2D" uid="uid://cijj1633qbah1" path="res://assets/stone_texture.png" id="4_xto7t"]
 [ext_resource type="Texture2D" uid="uid://owp4ebv6tlr6" path="res://assets/wall_texture.png" id="6_t80w2"]
-[ext_resource type="Shader" uid="uid://cudqxisvkqsti" path="res://shaders/vhs_shader.gdshader" id="7_8a2b0"]
+[ext_resource type="Shader" uid="uid://wediujfheye5" path="res://addons/postfx/shaders/vignette.gdshader" id="7_8a2b0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhyyw"]
 cull_mode = 1
-albedo_texture = ExtResource("4_xto7t")
+albedo_texture = ExtResource("2_8a2b0")
 uv1_scale = Vector3(6, 6, 6)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_t80w2"]
@@ -48,15 +48,15 @@ size = Vector2(547, 93)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ecu0b"]
 shader = ExtResource("7_8a2b0")
-shader_parameter/wiggle = 3.0000001425
-shader_parameter/roll_speed = 0.50000002375
-shader_parameter/scanline_opacity = 0.0010000000475
-shader_parameter/distortion_amount = 0.0
+shader_parameter/vignette_intensity = 5.0
+shader_parameter/vignette_opacity = 0.4670000221825
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
-[node name="Level" type="Node2D" unique_id=1925054201 node_paths=PackedStringArray("mesh", "light", "camera", "player", "back_sprite")]
+[node name="Level" type="Node2D" unique_id=1925054201 node_paths=PackedStringArray("mesh", "light", "camera2d", "camera", "player", "back_sprite")]
 script = ExtResource("1_uhyyw")
 mesh = NodePath("background/SubViewportContainer/SubViewport/MeshInstance3D")
 light = NodePath("background/SubViewportContainer/SubViewport/SpotLight3D")
+camera2d = NodePath("PlayerCamera")
 camera = NodePath("background/SubViewportContainer/SubViewport/Camera3D")
 player = NodePath("Frog")
 back_sprite = NodePath("background/background_sprite")
@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5775784)
 fov = 96.99366
 
 [node name="SpotLight3D" type="SpotLight3D" parent="background/SubViewportContainer/SubViewport" unique_id=133180700]
-transform = Transform3D(1, 0, 0, 0, 0.5359742, 0.84423435, 0, -0.84423435, 0.5359742, 0, 2.00036, 0.7820145)
+transform = Transform3D(1, 0, 0, 0, 0.26281238, 0.96484697, 0, -0.96484697, 0.26281238, 0, 2.00036, 0.31537485)
 spot_range = 3.9009933
 spot_angle = 38.97244
 

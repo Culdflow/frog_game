@@ -1,5 +1,3 @@
 res://Levels/level.tscn
-res://Objects/frog.tscn
 res://test_scenes/test_scene.gd
-res://States/IdleState.gd
-res://States/teleportingState.gd
+res://addons/postfx/shaders/dither.gdshader
