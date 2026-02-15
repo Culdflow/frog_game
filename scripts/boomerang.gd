@@ -3,6 +3,8 @@ class_name Boomerang
 
 @export var speed: int = 1000
 @export var turn_speed := 8.0
+@export var anim: AnimationPlayer
+@export var line: boom_line
 var bounce_list: Array[Vector2] = []
 var max_dist = 100
 var frog: Frog
@@ -30,14 +32,21 @@ func _physics_process(delta: float) -> void:
 	# ---- DESPAWN ----
 	if returning and global_position.distance_to(frog.global_position) < 40:
 		_despawn()
+	if (line.point_size < 150):
+		line.point_size += 1
 
-func _start(_vel: Vector2, _dist: int, _frog: Frog, pos: Vector2):
+func _start(_vel: Vector2, _dist: int, _frog: Frog, pos: Vector2, max: bool):
 	velocity = _vel * speed
 	max_dist = _dist
 	frog = _frog
 	global_position = pos
 	bounce_list.append(global_position)
 	dist = 0
+	if max:
+		line.default_color = Color.RED
+	anim.play("spinning")
+	line.visible = true
+	line.point_size = 0
 
 func _despawn():
 	frog.isThrowing = false

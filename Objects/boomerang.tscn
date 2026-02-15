@@ -1,22 +1,98 @@
 [gd_scene format=3 uid="uid://lhwlh41e2k61"]
 
-[ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="1_wd0yr"]
 [ext_resource type="Script" uid="uid://bod4g4uwhmhou" path="res://scripts/boomerang.gd" id="1_wito0"]
+[ext_resource type="Shader" uid="uid://bedrl2xrl2cqn" path="res://outline.gdshader" id="2_g2nwx"]
+[ext_resource type="Texture2D" uid="uid://bpcsmpa4jyqdu" path="res://assets/boomerang.png" id="2_wito0"]
+[ext_resource type="Script" uid="uid://coernwxf8636e" path="res://scripts/boomerang_line.gd" id="4_e4no8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4no8"]
+shader = ExtResource("2_g2nwx")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 50.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="Curve" id="Curve_enelk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd0yr"]
-size = Vector2(106, 17)
+size = Vector2(47.832016, 19.945438)
 
-[node name="Boomerang" type="CharacterBody2D" unique_id=852341950]
+[sub_resource type="Animation" id="Animation_g2nwx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_e4no8"]
+resource_name = "spinning"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enelk"]
+_data = {
+&"RESET": SubResource("Animation_g2nwx"),
+&"spinning": SubResource("Animation_e4no8")
+}
+
+[node name="Boomerang" type="CharacterBody2D" unique_id=852341950 node_paths=PackedStringArray("anim", "line")]
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_wito0")
+anim = NodePath("AnimationPlayer")
+line = NodePath("Icon/Line2D")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1961889482]
-position = Vector2(-13.175568, -2.2464275)
-scale = Vector2(-0.79413176, 0.1562114)
-texture = ExtResource("1_wd0yr")
+material = SubResource("ShaderMaterial_e4no8")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_wito0")
+offset = Vector2(249.99997, 309.99997)
+
+[node name="Line2D" type="Line2D" parent="Icon" unique_id=1129147215 node_paths=PackedStringArray("sprite")]
+visible = false
+top_level = true
+points = PackedVector2Array(-1, 0)
+width = 20.0
+width_curve = SubResource("Curve_enelk")
+default_color = Color(1, 1, 1, 0.16078432)
+script = ExtResource("4_e4no8")
+sprite = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1014146607]
-position = Vector2(-11, -0.5)
+position = Vector2(21.000008, -5)
+rotation = -0.15416187
 shape = SubResource("RectangleShape2D_wd0yr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=649373556]
+position = Vector2(-6.9999804, 21.000004)
+rotation = 1.7429144
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_wd0yr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=626567291]
+libraries/ = SubResource("AnimationLibrary_enelk")

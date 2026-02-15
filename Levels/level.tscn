@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://b7mr4w0wkjhow" path="res://Objects/frog.tscn" id="1_s41d2"]
 [ext_resource type="Script" uid="uid://dj82o0i1t0lg5" path="res://test_scenes/test_scene.gd" id="1_uhyyw"]
 [ext_resource type="Texture2D" uid="uid://c1aaicnt5gn8c" path="res://assets/background_wall.png" id="2_8a2b0"]
-[ext_resource type="Texture2D" uid="uid://bvsp3r4cdp8n4" path="res://assets/bottom_well_floor.png" id="3_wav5q"]
+[ext_resource type="Texture2D" uid="uid://ck0a0rey8kba7" path="res://assets/floor_texture.png" id="6_8a2b0"]
 [ext_resource type="Texture2D" uid="uid://owp4ebv6tlr6" path="res://assets/wall_texture.png" id="6_t80w2"]
 [ext_resource type="Shader" uid="uid://wediujfheye5" path="res://addons/postfx/shaders/vignette.gdshader" id="7_8a2b0"]
+[ext_resource type="Texture2D" uid="uid://cn125gq7puwjv" path="res://assets/transition_wall_floor.png" id="7_ecu0b"]
+[ext_resource type="Texture2D" uid="uid://j7l08amidrm5" path="res://assets/transition_wall_floor_right.png" id="8_t2u7g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhyyw"]
 cull_mode = 1
@@ -20,7 +22,7 @@ material = SubResource("StandardMaterial3D_uhyyw")
 viewport_path = NodePath("background/SubViewportContainer/SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtnvv"]
-size = Vector2(205, 4321)
+size = Vector2(205, 4814)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wav5q"]
 size = Vector2(206, 4265)
@@ -110,7 +112,7 @@ friction = 100
 [node name="Walls" type="Node2D" parent="." unique_id=2042915956]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls" unique_id=1441298650]
-position = Vector2(138, -93)
+position = Vector2(194, -260)
 collision_layer = 2
 collision_mask = 5
 
@@ -125,11 +127,11 @@ uv = PackedVector2Array(0, 0, 0, 500, 500, 500, 500, 0)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=1669572709]
-position = Vector2(-43.5, -1024.5)
+position = Vector2(-43.5, -778)
 shape = SubResource("RectangleShape2D_gtnvv")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Walls" unique_id=1122733291]
-position = Vector2(-161, -32)
+position = Vector2(-194, -65)
 collision_layer = 2
 collision_mask = 5
 
@@ -154,9 +156,9 @@ shape = SubResource("RectangleShape2D_wav5q")
 collision_layer = 2
 
 [node name="BottomWellFloor" type="Sprite2D" parent="Floors/StaticBody2D" unique_id=1278523551]
-position = Vector2(982, 1096.0001)
-scale = Vector2(0.49218795, 0.49218795)
-texture = ExtResource("3_wav5q")
+position = Vector2(988.1879, 1096.0001)
+scale = Vector2(0.489094, 0.49218795)
+texture = ExtResource("6_8a2b0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D" unique_id=1439370962]
 position = Vector2(977.5, 1086)
@@ -232,6 +234,17 @@ collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ledges/StaticBody2D4" unique_id=2010143136]
 polygon = PackedVector2Array(0, 0, 800, 250, 0, 150)
+
+[node name="TransitionWallFloor" type="Sprite2D" parent="." unique_id=1539672776]
+position = Vector2(987, 976)
+scale = Vector2(0.492, 0.492)
+texture = ExtResource("7_ecu0b")
+
+[node name="TransitionWallFloor2" type="Sprite2D" parent="." unique_id=2004375804]
+position = Vector2(980, 979)
+scale = Vector2(0.492, 0.492)
+texture = ExtResource("8_t2u7g")
+flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1405645970]
 layer = 8000

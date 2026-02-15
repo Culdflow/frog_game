@@ -19,7 +19,7 @@ func _enter():
 	player.get_parent().add_child(boomerang_instance)
 	player.boom = boomerang_instance
 	print(player.boom)
-	boomerang_instance._start(norm_vec_boom, player.chargeAmount * dist_multiplier, player, player.global_position)
+	boomerang_instance._start(norm_vec_boom, player.chargeAmount * dist_multiplier, player, player.global_position, player.chargeAmount >= 100)
 
 func anim_fin(anim):
 	Transitioned.emit(self, "idlestate")

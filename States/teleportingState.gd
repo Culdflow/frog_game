@@ -15,7 +15,10 @@ func _enter():
 	player.collision_layer = 0
 	player.collision_mask = 0
 	if (player.boom):  
-		kept_vel = player.boom.velocity
+		if player.boom.returning:
+			kept_vel = Vector2(0, 0)
+		else:
+			kept_vel = player.boom.velocity
 		var bouncle_list = player.boom.bounce_list
 		var last_tp = player.boom.global_position
 		player.boom.queue_free()
