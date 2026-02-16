@@ -28,6 +28,8 @@ shader_parameter/number_of_images = Vector2(1, 1)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Gradient" id="Gradient_niil7"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuh1s"]
 size = Vector2(120, 75)
 
@@ -258,6 +260,7 @@ hframes = 12
 top_level = true
 width = 50.0
 width_curve = SubResource("Curve_niil7")
+gradient = SubResource("Gradient_niil7")
 script = ExtResource("4_niil7")
 sprite = NodePath("..")
 

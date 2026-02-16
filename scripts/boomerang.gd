@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	# ---- DESPAWN ----
 	if returning and global_position.distance_to(frog.global_position) < 40:
 		_despawn()
-	if (line.point_size < 150):
+	if (line.point_size < 100):
 		line.point_size += 1
 
 func _start(_vel: Vector2, _dist: int, _frog: Frog, pos: Vector2, max: bool):
@@ -43,7 +43,7 @@ func _start(_vel: Vector2, _dist: int, _frog: Frog, pos: Vector2, max: bool):
 	bounce_list.append(global_position)
 	dist = 0
 	if max:
-		line.default_color = Color.RED
+		line.default_color = 0xcf001529
 	anim.play("spinning")
 	line.visible = true
 	line.point_size = 0

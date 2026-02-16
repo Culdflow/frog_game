@@ -18,7 +18,6 @@ func _enter():
 	norm_vec_boom = (mouse_pos - player.global_position).normalized()
 	player.get_parent().add_child(boomerang_instance)
 	player.boom = boomerang_instance
-	print(player.boom)
 	boomerang_instance._start(norm_vec_boom, player.chargeAmount * dist_multiplier, player, player.global_position, player.chargeAmount >= 100)
 
 func anim_fin(anim):
