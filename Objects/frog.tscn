@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cwfp6yoeurc82" path="res://scripts/frog.gd" id="1_kuh1s"]
 [ext_resource type="Texture2D" uid="uid://cwj0p8amtygjy" path="res://icon.svg" id="1_vwpa2"]
 [ext_resource type="Shader" uid="uid://bedrl2xrl2cqn" path="res://outline.gdshader" id="2_0nkt8"]
-[ext_resource type="Texture2D" uid="uid://c3fatyh7wqxv1" path="res://assets/finished.png" id="2_fny7c"]
 [ext_resource type="Script" uid="uid://ckyp1lb52okf6" path="res://scripts/StateMachine.gd" id="3_ii6tf"]
+[ext_resource type="Texture2D" uid="uid://cpnb3aijx68yx" path="res://assets/frog_anim.png" id="3_niil7"]
 [ext_resource type="Script" uid="uid://chwdtdjg866d8" path="res://States/IdleState.gd" id="4_7uek1"]
 [ext_resource type="Script" uid="uid://r6mjtatw7fnm" path="res://scripts/player_line.gd" id="4_niil7"]
 [ext_resource type="Script" uid="uid://clxfjvsgbvi0y" path="res://States/chargingState.gd" id="5_fo7tm"]
@@ -198,20 +198,20 @@ resource_name = "squashstate"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:modulate")
+tracks/0/path = NodePath("Icon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.370884, 0.022002, 0.106331, 1)]
+"update": 1,
+"values": [13]
 }
 
 [sub_resource type="Animation" id="Animation_4t42x"]
 resource_name = "teleportingstate"
 length = 0.3
-loop_mode = 1
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -223,6 +223,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(3.2490118, 14.420007),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0nkt8"]
@@ -245,16 +257,18 @@ sprite = NodePath("Icon")
 spitAngle = NodePath("spitAngle")
 friction = 10
 gravity_speed_addr = 50
-max_fall_speed = 7000
+max_fall_speed = 3500
 slide_speed = 480.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1163530698]
 top_level = true
 z_index = 5
 material = SubResource("ShaderMaterial_0nkt8")
+position = Vector2(-4, -20.999996)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_fny7c")
-hframes = 12
+texture = ExtResource("3_niil7")
+offset = Vector2(20, 104.999985)
+hframes = 14
 
 [node name="Line2D" type="Line2D" parent="Icon" unique_id=1765817532 node_paths=PackedStringArray("sprite")]
 top_level = true
