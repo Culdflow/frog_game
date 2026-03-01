@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		var floor_normal := get_floor_normal()
 		var rot_val = get_floor_angle(Vector2.UP)
 		rotation = rot_val
+		sprite.rotation = rot_val
 
 		# Tangent along the slope
 		var slope_tangent := Vector2(floor_normal.y, -floor_normal.x).normalized()
@@ -33,6 +34,7 @@ func _physics_process(delta: float) -> void:
 			var slide_dir := downhill.normalized()
 			if (slide_dir.x < 0):
 				rotation = -rot_val
+				sprite.rotation = -rot_val
 
 			# Preserve any perpendicular velocity, replace only slope component
 			var perp := velocity - velocity.project(slope_tangent)

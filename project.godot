@@ -18,11 +18,6 @@ config/name="frog_game (4.4)"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-PsxVisualsGd4AutoLoad="*uid://c637x7kr7474n"
-PsxVisualsGd4AutoApply="*uid://xfi8l5t5e3hr"
-
 [display]
 
 window/size/viewport_width=1920
@@ -33,7 +28,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdshader/plugin.cfg")
+enabled=PackedStringArray("res://addons/nerdfonts/plugin.cfg")
 
 [input]
 

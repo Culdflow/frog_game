@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://owp4ebv6tlr6" path="res://assets/wall_texture.png" id="6_t80w2"]
 [ext_resource type="Shader" uid="uid://wediujfheye5" path="res://addons/postfx/shaders/vignette.gdshader" id="7_8a2b0"]
 [ext_resource type="Texture2D" uid="uid://cn125gq7puwjv" path="res://assets/transition_wall_floor.png" id="7_ecu0b"]
+[ext_resource type="Texture2D" uid="uid://blagwaliaadv7" path="res://assets/ledge_1.png" id="7_ugh17"]
 [ext_resource type="Texture2D" uid="uid://b3seoar6mai6h" path="res://assets/wall_ledge.png" id="7_vx8ih"]
 [ext_resource type="Texture2D" uid="uid://j7l08amidrm5" path="res://assets/transition_wall_floor_right.png" id="8_t2u7g"]
+[ext_resource type="Texture2D" uid="uid://blhwvin0tg3gy" path="res://assets/floating_edge.png" id="12_eabcg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhyyw"]
 cull_mode = 1
@@ -22,17 +24,8 @@ material = SubResource("StandardMaterial3D_uhyyw")
 [sub_resource type="ViewportTexture" id="ViewportTexture_xto7t"]
 viewport_path = NodePath("background/SubViewportContainer/SubViewport")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtnvv"]
-size = Vector2(205, 4814)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wav5q"]
-size = Vector2(206, 4265)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s41d2"]
-size = Vector2(1981, 118)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xto7t"]
-size = Vector2(270, 93)
+size = Vector2(482, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhyyw"]
 size = Vector2(270, 93)
@@ -48,6 +41,15 @@ size = Vector2(547, 93)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2u7g"]
 size = Vector2(547, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtnvv"]
+size = Vector2(205, 4814)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wav5q"]
+size = Vector2(206, 4265)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s41d2"]
+size = Vector2(1981, 118)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ecu0b"]
 shader = ExtResource("7_8a2b0")
@@ -68,10 +70,10 @@ back_sprite = NodePath("background/background_sprite")
 position = Vector2(-1365, 253)
 
 [node name="ColorRect" type="ColorRect" parent="background" unique_id=600707606]
-offset_left = -2199.0
-offset_top = -4104.0
-offset_right = 6127.0
-offset_bottom = 3458.0
+offset_left = -1931.0
+offset_top = -3877.0
+offset_right = 6395.0
+offset_bottom = 3685.0
 color = Color(0, 0, 0, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="background" unique_id=265829065]
@@ -110,6 +112,89 @@ metadata/_custom_type_script = "uid://50jbw18b43bo"
 position = Vector2(1005, 248)
 friction = 100
 
+[node name="Ledges" type="Node2D" parent="." unique_id=828176805]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ledges" unique_id=4433349]
+position = Vector2(292, 333)
+collision_layer = 2
+collision_mask = 5
+
+[node name="WallLedge" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=1975909174]
+position = Vector2(60, -43.000008)
+scale = Vector2(0.404, 0.404)
+texture = ExtResource("7_ugh17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=984547363]
+position = Vector2(112, -8)
+shape = SubResource("RectangleShape2D_xto7t")
+
+[node name="WallLedge2" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=1366440319]
+position = Vector2(1442, -543.00006)
+scale = Vector2(0.25400013, 0.25400013)
+texture = ExtResource("7_ugh17")
+flip_h = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1704414216]
+position = Vector2(1399, -511)
+shape = SubResource("RectangleShape2D_uhyyw")
+
+[node name="WallLedge3" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=1237832719]
+position = Vector2(1258.5, -1087.5)
+scale = Vector2(0.674, 0.674)
+texture = ExtResource("7_vx8ih")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=309162068]
+position = Vector2(1395.5, -1206)
+shape = SubResource("RectangleShape2D_t80w2")
+
+[node name="WallLedge4" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=494008302]
+position = Vector2(1355.3198, -2380.3198)
+scale = Vector2(0.23727942, 0.23727942)
+texture = ExtResource("7_vx8ih")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1167082247]
+position = Vector2(1595.5, -2396)
+shape = SubResource("RectangleShape2D_8a2b0")
+
+[node name="WallLedge5" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=547122827]
+position = Vector2(73.00003, -2872.66)
+scale = Vector2(0.4746395, 0.4746395)
+texture = ExtResource("7_vx8ih")
+flip_h = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1900882797]
+position = Vector2(-112.5, -2941)
+shape = SubResource("RectangleShape2D_ecu0b")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1864448752]
+position = Vector2(529.5, -3716)
+shape = SubResource("RectangleShape2D_t2u7g")
+
+[node name="FloatingEdge" type="Sprite2D" parent="Ledges/StaticBody2D/CollisionShape2D6" unique_id=1502938121]
+position = Vector2(35.5, 130)
+scale = Vector2(1.075, 1.075)
+texture = ExtResource("12_eabcg")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1168892774]
+position = Vector2(1615.5, -3722)
+shape = SubResource("RectangleShape2D_t2u7g")
+
+[node name="FloatingEdge2" type="Sprite2D" parent="Ledges/StaticBody2D/CollisionShape2D7" unique_id=1314892687]
+position = Vector2(10.5, 136)
+scale = Vector2(1.075, 1.075)
+texture = ExtResource("12_eabcg")
+
+[node name="WallLedge6" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=430678415]
+position = Vector2(163.07422, -1611.2897)
+rotation = 0.29916152
+scale = Vector2(1.1465586, 1.1465586)
+texture = ExtResource("7_vx8ih")
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ledges/StaticBody2D" unique_id=2010143136]
+position = Vector2(-330, -2075)
+polygon = PackedVector2Array(0, 0, 800, 250, 0, 150)
+
 [node name="Walls" type="Node2D" parent="." unique_id=2042915956]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls" unique_id=1441298650]
@@ -126,6 +211,14 @@ texture_scale = Vector2(1, 100)
 polygon = PackedVector2Array(-250, -250, -250, 250, 250, 250, 250, -250)
 uv = PackedVector2Array(0, 0, 0, 500, 500, 500, 500, 0)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="ColorRect" type="ColorRect" parent="Walls/StaticBody2D/Sprite2D" unique_id=1026238588]
+offset_left = -262.0
+offset_top = -139.32
+offset_right = -222.0
+offset_bottom = -99.32001
+scale = Vector2(1, 3.8216004)
+color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=1669572709]
 position = Vector2(-43.5, -778)
@@ -165,78 +258,6 @@ texture = ExtResource("6_8a2b0")
 position = Vector2(977.5, 1086)
 shape = SubResource("RectangleShape2D_s41d2")
 
-[node name="Ledges" type="Node2D" parent="." unique_id=828176805]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Ledges" unique_id=4433349]
-position = Vector2(292, 333)
-collision_layer = 2
-collision_mask = 5
-
-[node name="WallLedge" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=1975909174]
-position = Vector2(51, 53)
-scale = Vector2(0.404, 0.404)
-texture = ExtResource("7_vx8ih")
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=984547363]
-shape = SubResource("RectangleShape2D_xto7t")
-
-[node name="WallLedge2" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=1366440319]
-position = Vector2(1335.0001, -452.00006)
-scale = Vector2(0.404, 0.404)
-texture = ExtResource("7_vx8ih")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1704414216]
-position = Vector2(1399, -511)
-shape = SubResource("RectangleShape2D_uhyyw")
-
-[node name="WallLedge3" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=1237832719]
-position = Vector2(1258.5, -1087.5)
-scale = Vector2(0.674, 0.674)
-texture = ExtResource("7_vx8ih")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=309162068]
-position = Vector2(1395.5, -1206)
-shape = SubResource("RectangleShape2D_t80w2")
-
-[node name="WallLedge4" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=494008302]
-position = Vector2(1355.3198, -2380.3198)
-scale = Vector2(0.23727942, 0.23727942)
-texture = ExtResource("7_vx8ih")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1167082247]
-position = Vector2(1595.5, -2396)
-shape = SubResource("RectangleShape2D_8a2b0")
-
-[node name="WallLedge5" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=547122827]
-position = Vector2(73.00003, -2872.66)
-scale = Vector2(0.4746395, 0.4746395)
-texture = ExtResource("7_vx8ih")
-flip_h = true
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1900882797]
-position = Vector2(-112.5, -2941)
-shape = SubResource("RectangleShape2D_ecu0b")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1864448752]
-position = Vector2(529.5, -3716)
-shape = SubResource("RectangleShape2D_t2u7g")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ledges/StaticBody2D" unique_id=1168892774]
-position = Vector2(1615.5, -3722)
-shape = SubResource("RectangleShape2D_t2u7g")
-
-[node name="WallLedge6" type="Sprite2D" parent="Ledges/StaticBody2D" unique_id=430678415]
-position = Vector2(163.07422, -1611.2897)
-rotation = 0.29916152
-scale = Vector2(1.1465586, 1.1465586)
-texture = ExtResource("7_vx8ih")
-flip_h = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ledges/StaticBody2D" unique_id=2010143136]
-position = Vector2(-330, -2072)
-polygon = PackedVector2Array(0, 0, 800, 250, 0, 150)
-
 [node name="TransitionWallFloor" type="Sprite2D" parent="." unique_id=1539672776]
 position = Vector2(987, 976)
 scale = Vector2(0.492, 0.492)
@@ -250,7 +271,6 @@ flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1405645970]
 layer = 8000
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=568058326]
 top_level = true
@@ -259,5 +279,8 @@ material = SubResource("ShaderMaterial_ecu0b")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
