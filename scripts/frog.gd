@@ -6,17 +6,20 @@ var isThrowing = false
 var boom: Boomerang = null
 var last_vel = Vector2(0, 0)
 @export var sprite: Sprite2D
-@export var spitAngle: Node2D
 @export var friction: = 1000
 @export var gravity_speed_addr = 100
 @export var max_fall_speed = 1500
 @export var rotation_lerp := 10.0
 @export var slide_speed := 120.0
+@export var state_machine : StateMachine
+@export var spit_out_marker: Marker2D
 
 func _physics_process(delta: float) -> void:
 	if (get_global_mouse_position().x < global_position.x):
 		sprite.flip_h = true
+		spit_out_marker.position.x = -300
 	else:
+		spit_out_marker.position.x = 300
 		sprite.flip_h = false
 	if is_on_floor():
 		var floor_normal := get_floor_normal()
@@ -52,6 +55,9 @@ func _physics_process(delta: float) -> void:
 		if is_on_wall():
 			velocity.x = -(last_vel.x / 2)
 	last_vel = velocity
+
+func get_state() -> String:
+	return state_machine.current_state.name.to_lower()
 
 func _process(delta: float) -> void:
 	sprite.global_position = global_position

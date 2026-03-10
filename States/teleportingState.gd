@@ -2,10 +2,10 @@ extends State
 class_name TeleportingState
 
 @export var tp_speed = 100
-var kept_vel = Vector2(0, 0)
 var last_tp_tweem
 var tp_tween
 var last_gravity_addr
+var pos_before_last_tween
 
 func _enter():
 	print("[ENTER]: teleporting")
@@ -15,10 +15,6 @@ func _enter():
 	player.collision_layer = 0
 	player.collision_mask = 0
 	if (player.boom):  
-		if player.boom.returning:
-			kept_vel = Vector2(0, 0)
-		else:
-			kept_vel = player.boom.velocity
 		var bouncle_list = player.boom.bounce_list
 		var last_tp = player.boom.global_position
 		player.boom.queue_free()
@@ -27,16 +23,15 @@ func _enter():
 			var distance = player.global_position.distance_to(pos)
 			tp_tween.tween_property(player, "global_position", pos, (distance / tp_speed))
 			await tp_tween.finished
+		pos_before_last_tween = player.global_position
 		last_tp_tweem = get_tree().create_tween()
 		last_tp_tweem.finished.connect(_tween_finished)
 		var distance = player.global_position.distance_to(last_tp)
 		last_tp_tweem.tween_property(player, "global_position", last_tp, (distance / tp_speed))
-		
-		
 		player.boom = null
 
 func _tween_finished():
-	player.velocity = kept_vel
+	player.velocity = (player.global_position - pos_before_last_tween).normalized() * (tp_speed / 2)
 	Transitioned.emit(self, "idlestate")
 	player.isThrowing = false
 

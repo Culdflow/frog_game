@@ -12,13 +12,12 @@ func _ready() -> void:
 func _enter():
 	print("[ENTER]: spit")
 	player.isThrowing = true
-	player.spitAngle.look_at(player.get_global_mouse_position())
 	var boomerang_instance = boomerang.instantiate()
 	var mouse_pos := player.get_global_mouse_position()
 	norm_vec_boom = (mouse_pos - player.global_position).normalized()
 	player.get_parent().add_child(boomerang_instance)
 	player.boom = boomerang_instance
-	boomerang_instance._start(norm_vec_boom, player.chargeAmount * dist_multiplier, player, player.global_position, player.chargeAmount >= 100)
+	boomerang_instance._start(norm_vec_boom, player.chargeAmount * dist_multiplier, player, player.spit_out_marker.global_position, player.chargeAmount >= 100)
 
 func anim_fin(anim):
 	Transitioned.emit(self, "idlestate")
